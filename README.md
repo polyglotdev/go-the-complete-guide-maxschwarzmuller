@@ -42,6 +42,7 @@ The package declaration is used to define which package the file belongs to. The
 ## The Importance of the name `main`
 
 - reserved package keyword `main` is used to create an executable program.
+- You can not have more than one `main` package in a Go program.
 
 ## Understanding Go modules and Building Go Programs
 
