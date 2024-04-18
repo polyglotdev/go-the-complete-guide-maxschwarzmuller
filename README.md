@@ -88,3 +88,12 @@ In Go value types come with a "null value" which is the value stored in a variab
 - `[]` for arrays and slices
 - `struct{}{}` for structs
 - `chan struct{}{}` for channels
+
+## Practice Time
+
+- What we are building: Profit Calculator
+- What are the inputs: revenue, expenses, taxRate
+- Calculates earnings before tax: revenue - expenses
+- Calculates earnings after tax: earnings before tax - (earnings before tax \* taxRate)
+- Calculate ratio: ebt/profit
+- Output: earnings before tax, profit, ratio
