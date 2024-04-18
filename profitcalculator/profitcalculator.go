@@ -2,13 +2,10 @@ package main
 
 import "fmt"
 
-const (
-	taxRate = 30
-)
-
 func main() {
 	var revenue float64
 	var expenses float64
+	var taxRate float64
 
 	fmt.Print("Revenue: ")
 	fmt.Scan(&revenue)
@@ -16,11 +13,14 @@ func main() {
 	fmt.Print("Expenses: ")
 	fmt.Scan(&expenses)
 
-	profit := revenue - expenses
-	tax := profit * taxRate / 100
-	netProfit := profit - tax
+	fmt.Print("Tax Rate: ")
+	fmt.Scan(&taxRate)
 
-	fmt.Printf("Profit: $%.2f\n", profit)
-	fmt.Printf("Tax: $%.2f\n", tax)
-	fmt.Printf("Net Profit: $%.2f\n", netProfit)
+	ebt := revenue - expenses
+	profit := ebt * (1 - taxRate/100)
+	ratio := ebt / profit
+
+	fmt.Printf("Profit: $%.2f\n", ebt)
+	fmt.Printf("Tax: $%.2f\n", profit)
+	fmt.Printf("Ratio: %.2f\n", ratio)
 }
