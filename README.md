@@ -48,3 +48,28 @@ The package declaration is used to define which package the file belongs to. The
 
 - Go modules are used to manage dependencies.
 - 1 module consists of multiple packages.
+
+## Go Types and Null Values
+
+Go comes with a couple of built-in basic types:
+
+- `bool`: for booleans `true` and `false`
+- `int`: Numbers **without** decimal places
+- `float64`: Numbers **with** decimal places
+- `string`: text values(created with double quotes or backticks)
+
+There are also some more complex types:
+
+- `uint`: unsigned integer(only positive or zero) Unsigned means that the **integer can only represent non-negative numbers**.
+  - `uint8`: 8-bit unsigned integer(0 to 255)
+  - `uint16`: 16-bit unsigned integer(0 to 65535)
+  - `uint32`: 32-bit unsigned integer(0 to 4294967295)
+  - `uint64`: 64-bit unsigned integer(0 to 18446744073709551615)
+- `int32`: 32-bit signed integer(-2147483648 to 2147483647)
+- `int64`: 64-bit signed integer(-9223372036854775808 to 9223372036854775807)
+- `rune`: represents a Unicode code point
+- `byte`: alias for `uint8`
+- `complex64`: complex numbers with float32 real and imaginary parts
+- `complex128`: complex numbers with float64 real and imaginary parts
+- `uintptr`: an unsigned integer to store the uninterpreted bits of a pointer value
+- `nil`: the zero value for pointers, interfaces, maps, slices, channels, and functions
