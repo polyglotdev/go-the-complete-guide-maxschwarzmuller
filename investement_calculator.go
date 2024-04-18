@@ -10,10 +10,22 @@ const (
 )
 
 func main() {
-	investmentAmount, expectedReturn, years := 1000.00, 5.5, 10.0
+	var investmentAmount float64
+	var expectedReturn float64
+	var years float64
 
-	var futureValue = investmentAmount * math.Pow(1+expectedReturn/100, years)
+	fmt.Print("Investment amount: ")
+	fmt.Scan(&investmentAmount)
+
+	fmt.Print("Expected Return Rate: ")
+	fmt.Scan(&expectedReturn)
+
+	fmt.Print("Years: ")
+	fmt.Scan(&years)
+
+	futureValue := investmentAmount * math.Pow(1+expectedReturn/100, years)
 	futureRealValue := futureValue / math.Pow(1+inflationRate/100, years)
+
 	fmt.Printf("Future value is: $%.2f\n", futureValue)
 	fmt.Printf("Future real value is: $%.2f\n", futureRealValue)
 }
