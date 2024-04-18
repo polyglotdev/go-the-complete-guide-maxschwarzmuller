@@ -73,3 +73,18 @@ There are also some more complex types:
 - `complex128`: complex numbers with float64 real and imaginary parts
 - `uintptr`: an unsigned integer to store the uninterpreted bits of a pointer value
 - `nil`: the zero value for pointers, interfaces, maps, slices, channels, and functions
+
+## Null Values
+
+In Go value types come with a "null value" which is the value stored in a variable if no other value has been explicitly assigned to it. The null value for a type is the zero value for that type.
+
+- `0` for numeric types
+- `false` for the boolean type
+- `""` for strings
+- `nil` for pointers, functions, interfaces, slices, channels, and maps
+- `0.0` for floating-point numbers
+- `0+0i` for complex numbers
+- `'\u0000'` for runes
+- `[]` for arrays and slices
+- `struct{}{}` for structs
+- `chan struct{}{}` for channels
