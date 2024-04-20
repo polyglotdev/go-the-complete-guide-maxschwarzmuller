@@ -5,6 +5,16 @@ import (
 	"os"
 )
 
+func main() {
+	balance := 1000.00
+
+	for {
+		printMenu()
+		choice := getChoice()
+		processChoice(choice, &balance)
+	}
+}
+
 // printMenu is a function that displays the main menu of the Go Bank application.
 // It provides the user with the following options:
 //
@@ -75,15 +85,5 @@ func processChoice(choice int, balance *float64) {
 		os.Exit(0)
 	default:
 		fmt.Println("Invalid choice")
-	}
-}
-
-func main() {
-	balance := 1000.00
-
-	for {
-		printMenu()
-		choice := getChoice()
-		processChoice(choice, &balance)
 	}
 }
