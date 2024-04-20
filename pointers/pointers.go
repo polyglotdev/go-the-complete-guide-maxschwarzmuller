@@ -24,4 +24,14 @@ func main() {
 
 	// Print the value of num using ptr.
 	println("Value of num using ptr:", *ptr)
+
+	age := 30
+	println("Age before:", age)
+	alterAge(&age)
+	println("Age after:", age)
+}
+
+func alterAge(age *int) int {
+	*age = 25
+	return *age
 }
