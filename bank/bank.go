@@ -3,25 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	welcome, _ := greeting()
-	fmt.Println(welcome)
-	menu := menu()
-	fmt.Println(menu)
-}
+	fmt.Println("Welcome to Go Bank!")
+	fmt.Println("What do you want to do?")
+	fmt.Println("1. Check Balance")
+	fmt.Println("2. Deposit money")
+	fmt.Println("3. Withdraw money")
+	fmt.Println("4. Exit")
 
-func greeting() (string, string) {
-	welcome := "Welcome to the Go bank!"
-	instructions := "Please select an option from the menu below:"
-
-	return fmt.Sprintf("%s\n%s", welcome, instructions), welcome
-}
-
-func menu() string {
-	menu := `
-1. Check balance
-2. Deposit funds
-3. Withdraw funds
-4. Exit
-`
-	return menu
+	// user input
+	var choice int
+	fmt.Print("Your choice: ")
+	fmt.Scanln(&choice)
+	fmt.Println("You selected:", choice)
 }
