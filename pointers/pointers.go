@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// Declare a pointer to an int.
 	var ptr *int
@@ -11,24 +13,24 @@ func main() {
 	ptr = &num
 
 	// Print the value of num.
-	println("Value of num:", num)
+	fmt.Println("Value of num:", num)
 
 	// Print the address of num.
-	println("Address of num:", &num)
+	fmt.Println("Address of num:", &num)
 
 	// Print the value of ptr.
-	println("Value of ptr:", ptr)
+	fmt.Println("Value of ptr:", ptr)
 
 	// Print the address of ptr.
-	println("Address of ptr:", &ptr)
+	fmt.Println("Address of ptr:", &ptr)
 
 	// Print the value of num using ptr.
-	println("Value of num using ptr:", *ptr)
+	fmt.Println("Value of num using ptr:", *ptr)
 
 	age := 30
-	println("Age before:", age)
+	fmt.Println("Age before:", age)
 	alterAge(&age)
-	println("Age after:", age)
+	fmt.Println("Age after:", age)
 }
 
 func alterAge(age *int) int {
