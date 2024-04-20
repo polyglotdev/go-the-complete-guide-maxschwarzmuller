@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Welcome to Go Bank!")
 	balance := 1000.00
 
 	for {
@@ -26,7 +27,6 @@ func main() {
 //
 // 4. Exit: This option allows the user to close the application.
 func printMenu() {
-	fmt.Println("Welcome to Go Bank!")
 	fmt.Println("What do you want to do?")
 	fmt.Println("1. Check Balance")
 	fmt.Println("2. Deposit money")
@@ -81,7 +81,7 @@ func processChoice(choice int, balance *float64) {
 			fmt.Printf("Your balance is: $%.2f\n", *balance)
 		}
 	case 4:
-		fmt.Println("Exit")
+		fmt.Println("Goodbye! 👋🏾")
 		os.Exit(0)
 	default:
 		fmt.Println("Invalid choice")
