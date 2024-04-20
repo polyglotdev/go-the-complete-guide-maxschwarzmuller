@@ -33,6 +33,9 @@ func main() {
 	fmt.Println("Age after:", age)
 }
 
+// alterAge is a function that takes a pointer to an integer as an argument.
+// It changes the value of the integer pointed to by the pointer to 25.
+// It then returns the new value.
 func alterAge(age *int) int {
 	*age = 25
 	return *age
