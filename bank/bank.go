@@ -81,7 +81,7 @@ func processChoice(choice int, balance *float64) {
 			fmt.Printf("Your balance is: $%.2f\n", *balance)
 		}
 	case 4:
-		fmt.Println("Goodbye! 👋🏾")
+		fmt.Println("Goodbye! ⭐")
 		os.Exit(0)
 	default:
 		fmt.Println("Invalid choice")
