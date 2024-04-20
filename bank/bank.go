@@ -3,17 +3,30 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func main() {
 	fmt.Println("Welcome to Go Bank!")
-	balance := 1000.00
+	balance := readBalance()
 
 	for {
 		printMenu()
 		choice := getChoice()
 		processChoice(choice, &balance)
 	}
+}
+
+func readBalance() float64 {
+	data, err := os.ReadFile("balance.txt")
+	if err != nil {
+		return 1000.00 // default balance if file doesn't exist
+	}
+	balance, err := strconv.ParseFloat(string(data), 64)
+	if err != nil {
+		return 1000.00 // default balance if file content is not a valid float
+	}
+	return balance
 }
 
 // printMenu is a function that displays the main menu of the Go Bank application.
@@ -72,6 +85,10 @@ func processChoice(choice int, balance *float64) {
 		depositedAmount := getAmount()
 		*balance += depositedAmount
 		fmt.Printf("Your balance is: $%.2f\n", *balance)
+		err := writeBalance(*balance)
+		if err != nil {
+			fmt.Println("Error writing balance:", err)
+		}
 	case 3:
 		withdrawAmount := getAmount()
 		if withdrawAmount > *balance {
@@ -79,6 +96,10 @@ func processChoice(choice int, balance *float64) {
 		} else {
 			*balance -= withdrawAmount
 			fmt.Printf("Your balance is: $%.2f\n", *balance)
+			err := writeBalance(*balance)
+			if err != nil {
+				fmt.Println("Error writing balance:", err)
+			}
 		}
 	case 4:
 		fmt.Println("Goodbye! ⭐")
@@ -86,4 +107,12 @@ func processChoice(choice int, balance *float64) {
 	default:
 		fmt.Println("Invalid choice")
 	}
+}
+
+func writeBalance(balance float64) error {
+	err := os.WriteFile("balance.txt", []byte(fmt.Sprintf("%.2f", balance)), 0644)
+	if err != nil {
+		return err
+	}
+	return nil
 }
