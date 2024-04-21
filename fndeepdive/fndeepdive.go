@@ -17,6 +17,7 @@ func main() {
 	fmt.Printf("Triple numbers: %v\n", result3)
 	fmt.Println("----------------------------------------")
 	fmt.Println("Numbers: ", numbers)
+	fmt.Println("----------------------------------------")
 }
 
 func double(number int) int {
