@@ -37,3 +37,27 @@ func main() {
   }
 }
 ```
+
+## `make` function
+
+The `make` function is used to create a map. The `make` function takes the type of the map as the first argument and returns a new map.
+
+```go
+m := make(map[string]int)
+```
+
+## Add key-value pairs
+
+To add a key-value pair to a map, use the following syntax:
+
+```go
+m["key"] = value
+```
+
+## Access a value
+
+To access a value by its key, use the following syntax:
+
+```go
+value := m["key"]
+```
