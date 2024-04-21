@@ -13,14 +13,14 @@ type User struct {
 }
 
 func main() {
-	firstName1 := getUserData("Please enter your first name: ")
-	lastName1 := getUserData("Please enter your last name: ")
-	birthdate1 := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	firstName := getUserData("Please enter your first name: ")
+	lastName := getUserData("Please enter your last name: ")
+	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	elijah := User{
-		FirstName: firstName1,
-		LastName:  lastName1,
-		Birthdate: birthdate1,
+		FirstName: firstName,
+		LastName:  lastName,
+		Birthdate: birthdate,
 		CreatedAt: time.Now(),
 	}
 
