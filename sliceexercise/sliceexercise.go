@@ -20,4 +20,8 @@ func main() {
 	fmt.Println("Main Hobbies Re-slice:", mainHobbies)
 	fmt.Println("Main Hobbies Capacity:", cap(mainHobbies))
 	fmt.Println("------------------------------------")
+	courseGoals := []string{"Feel more confident in ability to write Go", "Be a more focused learner", "Be able to take on more complex projects"}
+	for i, goal := range courseGoals {
+		fmt.Println(i+1, goal)
+	}
 }
