@@ -2,35 +2,43 @@ package main
 
 import "fmt"
 
+type Person struct {
+	Name       string
+	Age        int
+	Occupation string
+}
+
+func (p *Person) ChangeOccupation(newOccupation string) {
+	p.Occupation = newOccupation
+}
+
+func (p *Person) ChangeName(newName string) {
+	p.Name = newName
+}
+
+func (p *Person) ChangeAge(newAge int) {
+	p.Age = newAge
+}
+
 func main() {
-	// Declare a pointer to an int.
-	var ptr *int
-
-	// Declare an int variable.
-	num := 3
-
-	// Assign the address of num to ptr.
-	ptr = &num
-
-	// Print the value of num.
-	fmt.Println("Value of num:", num)
-
-	// Print the address of num.
-	fmt.Println("Address of num:", &num)
-
-	// Print the value of ptr.
-	fmt.Println("Value of ptr:", ptr)
-
-	// Print the address of ptr.
-	fmt.Println("Address of ptr:", &ptr)
-
-	// Print the value of num using ptr.
-	fmt.Println("Value of num using ptr:", *ptr)
-
 	age := 30
 	fmt.Println("Age before:", age)
 	alterAge(&age)
 	fmt.Println("Age after:", age)
+
+	person := Person{
+		Name:       "Elijah Hallan",
+		Age:        30,
+		Occupation: "Software Engineer",
+	}
+
+	fmt.Println("Name before:", person.Name)
+	person.ChangeName("Ezra Hallan")
+	fmt.Println("Name after:", person.Name)
+
+	fmt.Println("Age before:", person.Age)
+	person.ChangeAge(25)
+	fmt.Println("Age after:", person.Age)
 }
 
 // alterAge is a function that takes a pointer to an integer as an argument.
