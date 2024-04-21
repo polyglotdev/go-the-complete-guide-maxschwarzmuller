@@ -4,8 +4,8 @@ Concurrency in Go is a way of structuring software, particularly as a way of wri
 
 Go provides two main features for concurrent programming:
 
-1. Goroutines: A Goroutine is a lightweight thread managed by the Go runtime. They are very cheap compared to threads, you can create thousands of them at the same time.
-2. Channels: Channels are a typed conduit through which you can send and receive values with the channel operator.
+1. **Goroutines**: A Goroutine is a lightweight thread managed by the Go runtime. They are very cheap compared to threads, you can create thousands of them at the same time.
+2. **Channels**: Channels are a typed conduit through which you can send and receive values with the channel operator.
 
 Here is an example of how to use goroutines and channels:
 
