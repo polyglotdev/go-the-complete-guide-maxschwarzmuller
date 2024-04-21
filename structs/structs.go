@@ -34,7 +34,6 @@ func main() {
 
 	elijah.PrintUser()
 	ezra.PrintUser()
-
 }
 
 func getUserData(promptText string) string {
