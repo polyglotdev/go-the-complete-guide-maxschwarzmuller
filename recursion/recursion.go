@@ -20,7 +20,7 @@ func main() {
 
 	fmt.Println("-------------------------------")
 	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	sum2 := sumup(1, nums...)
+	sum2 := sumup(nums[0], nums...)
 	fmt.Printf("Sum2: %d\n", sum2)
 }
 
