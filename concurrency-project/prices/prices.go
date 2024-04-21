@@ -36,8 +36,6 @@ func (job *TaxIncludedPriceJob) Process(c chan bool) {
 	err := job.LoadData()
 
 	if err != nil {
-		fmt.Println("Error loading data:", err)
-		c <- false
 		return
 	}
 
@@ -49,9 +47,7 @@ func (job *TaxIncludedPriceJob) Process(c chan bool) {
 	}
 
 	job.TaxIncludedPrices = result
-	if err := job.IOManager.WriteResult(job); err != nil {
-		fmt.Println("Error writing result:", err)
-	}
+	job.IOManager.WriteResult(job)
 	c <- true
 }
 
