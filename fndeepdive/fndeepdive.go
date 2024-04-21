@@ -13,7 +13,7 @@ func main() {
 	})
 	fmt.Println("----------------------------------------")
 	fmt.Printf("Double numbers: %v\n", result1)
-	fmt.Printf("Double numbers as func: %v\n", result2)
+	fmt.Printf("Double numbers as anonymous func: %v\n", result2)
 	fmt.Printf("Triple numbers: %v\n", result3)
 	fmt.Println("----------------------------------------")
 	fmt.Println("Numbers: ", numbers)
