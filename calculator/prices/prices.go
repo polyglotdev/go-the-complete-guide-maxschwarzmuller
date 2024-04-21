@@ -9,6 +9,9 @@ type PriceJobWithTax struct {
 	TaxIncludedPrices map[string]float64
 }
 
+// Process calculates the price after tax for each price in InputPrices.
+// It creates a map where the keys are the original prices (as strings) and the values are the prices after tax.
+// The results are not returned, but can be accessed through the TaxRate field of the PriceJobWithTax struct.
 func (p *PriceJobWithTax) Process() {
 	result := make(map[string]float64)
 	for _, price := range p.InputPrices {
