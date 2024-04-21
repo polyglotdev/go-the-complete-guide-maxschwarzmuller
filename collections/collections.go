@@ -106,4 +106,15 @@ func main() {
 	fmt.Println("------------------------------------")
 	fmt.Println("Ticket prices: ", ticketPrices)
 	fmt.Println("Updated prices: ", updatedTicketPrices)
+
+	fmt.Println("------------------------------------")
+	dArray := [5]int{1, 2, 3, 4, 5}
+	newDArray := dArray
+	fmt.Println("dArray before change:", dArray)
+	fmt.Println("newDArray before change:", newDArray)
+	newDArray[0] = 100
+	fmt.Println("dArray after change:", dArray)
+	fmt.Println("newDArray after change:", newDArray)
+	fmt.Printf("dArray memory address: %p\n", &dArray)
+	fmt.Printf("newDArray memory address: %p\n", &newDArray)
 }
