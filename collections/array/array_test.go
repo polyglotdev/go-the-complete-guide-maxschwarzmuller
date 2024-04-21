@@ -53,3 +53,27 @@ func TestTotalFloat64(t *testing.T) {
 		ExpectedFloat64: 28.96,
 	})
 }
+
+func TestAverage(t *testing.T) {
+	type testCase struct {
+		Name string
+
+		Numbers []int
+
+		ExpectedFloat64 float64
+	}
+
+	validate := func(t *testing.T, tc *testCase) {
+		t.Run(tc.Name, func(t *testing.T) {
+			actualFloat64 := Average(tc.Numbers)
+
+			assert.Equal(t, tc.ExpectedFloat64, actualFloat64)
+		})
+	}
+
+	validate(t, &testCase{
+		Name:            "TestAverage with positive numbers",
+		Numbers:         []int{1, 2, 3, 4, 5},
+		ExpectedFloat64: 3,
+	})
+}
