@@ -27,7 +27,7 @@ func main() {
 
 	ezra := User{
 		FirstName: firstName,
-		LastName:  "Hallan",
+		LastName:  lastName,
 		Birthdate: "01/01/1990",
 		CreatedAt: time.Now(),
 	}
