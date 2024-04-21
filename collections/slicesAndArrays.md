@@ -118,3 +118,11 @@ fmt.Println("checkSlice2: ", checkSlice2)
 In this version, `checkSlice` and `checkSlice2` point to the same underlying array data, so a change to `checkSlice2` is visible when accessing `checkSlice`.
 
 Understanding the distinctions between these types and their use cases is fundamental in Go programming, particularly when performance and memory efficiency are concerns.
+
+## Things to remember
+
+1. **Arrays are value types**: When you assign an array to another variable, the entire array is copied.
+2. **Slices are reference types**: Slices point to an underlying array, and changes made through one slice are visible through all references to the same array.
+3. You cannot change the size of an array once it is declared. Slices, on the other hand, are dynamically-sized views on arrays and can be resized using built-in functions.
+4. Use arrays when you need a fixed-size collection of elements. Use slices when you need a dynamic collection that can grow or shrink.
+5. Use slices when you want to share data between multiple parts of your program without copying the data.
