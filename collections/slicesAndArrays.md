@@ -65,3 +65,28 @@ In Go, understanding the distinction between slices (reference types) and arrays
 - **Usage Scenarios:** Use arrays when you know the number of elements in advance and that number will not change. Use slices for everything else, especially when dealing with sequences of elements whose size might vary over time.
 
 Understanding these differences is not just academic—it affects how Go programs are written, optimized, and maintained. Using arrays and slices appropriately can lead to more efficient and effective code. Always consider the implications of each type's characteristics on memory usage and performance.
+
+## Examples
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+   checkArray := [5]int{1, 2, 3, 4, 5}
+   checkArray2 := checkArray
+   fmt.Println("checkArray: ", checkArray)
+   fmt.Println("checkArray2: ", checkArray2)
+   checkArray2[0] = 100
+   fmt.Println("checkArray: ", checkArray)
+   fmt.Println("checkArray2: ", checkArray2)
+}
+```
+
+### Explanation
+
+1. An array `checkArray` is initialized with the integers `1, 2, 3, 4, 5`. This array is stored in memory with each of these values laid out contiguously.
+2. The entire array `checkArray` is assigned to `checkArray2`. In Go, arrays are **value types**, which means that the **data is copied element-by-element from checkArray to a new array checkArray2**. They are now two separate entities in memory; **modifying one does not affect the other**.
+3. Lines 3 and 4: The output confirms that both arrays, `checkArray` and `checkArray2`, contain the same values [1, 2, 3, 4, 5] at this point.
+4. Line 5: The value at the first index of `checkArray2` is changed from 1 to 100. Since `checkArray2` is a separate copy of checkArray, this **modification does not reflect in checkArray**.
