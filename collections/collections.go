@@ -28,4 +28,8 @@ func main() {
 	fmt.Println("------------------------------------")
 	firstTwo := array.FirstTwo(numbers)
 	fmt.Printf("The first two numbers in numbers slice are: %v\n", firstTwo)
+
+	myArray := [5]int{1, 2, 3, 4, 5}
+	threeFourFive := myArray[2:]
+	fmt.Printf("The last three elements in myArray are: %v\n", threeFourFive)
 }
