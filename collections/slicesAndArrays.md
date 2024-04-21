@@ -126,3 +126,4 @@ Understanding the distinctions between these types and their use cases is fundam
 3. You cannot change the size of an array once it is declared. Slices, on the other hand, are dynamically-sized views on arrays and can be resized using built-in functions.
 4. Use arrays when you need a fixed-size collection of elements. Use slices when you need a dynamic collection that can grow or shrink.
 5. Use slices when you want to share data between multiple parts of your program without copying the data.
+6. `append()` function is used to add elements to a slice. If the underlying array is too small to accommodate new elements, a new array is allocated, and the data is copied over. A new array is also allocated if the slice exceeds its capacity.
