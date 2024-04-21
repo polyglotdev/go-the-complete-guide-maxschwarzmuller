@@ -52,9 +52,11 @@ func main() {
 	fmt.Printf("array2 memory address: %p\n", &array2)
 	fmt.Println("------------------------------------")
 
-	// slice1 and slice2 point to the same memory address
-	// so when we change slice1, slice2 will also change
-	slice1[0] = 4
-	fmt.Printf("slice1: %v\n", slice1)
-	fmt.Printf("slice2: %v\n", slice2)
+	myArray4 := [5]int{1, 2, 3, 4, 5}
+	fmt.Println("myArray4 before slice:", myArray4)
+	myArray4Slice := myArray4[:]
+	// append the number six to the end of myArray4Slice
+	myArray4Slice = append(myArray4Slice, 6)
+	fmt.Println("myArray4 after slice:", myArray4)
+	fmt.Println("myArray4Slice after slice:", myArray4Slice)
 }
