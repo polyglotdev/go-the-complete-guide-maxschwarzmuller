@@ -13,27 +13,19 @@ type User struct {
 }
 
 func main() {
-	firstName := getUserData("Please enter your first name: ")
-	lastName := getUserData("Please enter your last name: ")
-	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	firstName1 := getUserData("Please enter your first name: ")
+	lastName1 := getUserData("Please enter your last name: ")
+	birthdate1 := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	// ... do something awesome with that gathered data!
 	elijah := User{
-		FirstName: firstName,
-		LastName:  lastName,
-		Birthdate: birthdate,
-		CreatedAt: time.Now(),
-	}
-
-	ezra := User{
-		FirstName: firstName,
-		LastName:  lastName,
-		Birthdate: birthdate,
+		FirstName: firstName1,
+		LastName:  lastName1,
+		Birthdate: birthdate1,
 		CreatedAt: time.Now(),
 	}
 
 	elijah.PrintUser()
-	ezra.PrintUser()
+	// ezra.PrintUser()
 }
 
 func getUserData(promptText string) string {
@@ -52,4 +44,5 @@ func (u User) PrintUser() {
 	fmt.Printf("User Last Name: %s\n", u.LastName)
 	fmt.Printf("User Birthdate: %s\n", u.Birthdate)
 	fmt.Printf("User Created At: %s\n", u.CreatedAt)
+	fmt.Println("---------------------------------------------------------------------")
 }
