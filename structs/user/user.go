@@ -18,6 +18,12 @@ type User struct {
 	CreatedAt time.Time
 }
 
+type Admin struct {
+	email    string
+	password string
+	User
+}
+
 // PrintUser is a method on the User struct that prints the user's details.
 // It prints the user's first name, last name, birthdate, and the date the user was created.
 func (u User) PrintUser() {
@@ -31,7 +37,7 @@ func (u User) PrintUser() {
 // CreateUser is a function that prompts the user for their first name, last name, and birthdate.
 // It then creates a new User struct with these values and the current time as the CreatedAt value.
 // It does not take any arguments and returns a User struct.
-func CreateUser() (*User, error) {
+func New() (*User, error) {
 	firstName := GetUserData("Please enter your first name: ", false)
 	// Prompt the user for their last name. The second argument is false because a last name is not a date.
 	lastName := GetUserData("Please enter your last name: ", false)
@@ -45,6 +51,22 @@ func CreateUser() (*User, error) {
 		Birthdate: birthdate,
 		CreatedAt: time.Now(),
 	}, nil
+}
+
+// NewAdmin is a constructor function for creating a new Admin object.
+// It takes an email and a password as parameters and returns a pointer to the newly created Admin object.
+// The email and password are used to set the respective fields of the Admin object.
+func NewAdmin(email, password, firstName, lastName, birthdate string) *Admin {
+	return &Admin{
+		email:    email,
+		password: password,
+		User: User{
+			FirstName: firstName,
+			LastName:  lastName,
+			Birthdate: birthdate,
+			CreatedAt: time.Now(),
+		},
+	}
 }
 
 // GetUserData is a function that prompts the user for input and validates it.
