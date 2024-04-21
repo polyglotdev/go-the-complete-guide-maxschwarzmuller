@@ -14,4 +14,9 @@ func main() {
 	fmt.Println("Prices after re-slice:", prices)
 	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
 	fmt.Println("----------------------------------------------------------------------")
+
+	discountPrices := []float64{101.66, 1056.29, 850.50, 6.83}
+	prices = append(prices, discountPrices...)
+	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
+	fmt.Println("----------------------------------------------------------------------")
 }
