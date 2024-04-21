@@ -15,11 +15,10 @@ func main() {
 		c[i] = make(chan bool)
 		fm := filemanager.New("prices.txt", fmt.Sprintf("result_%.0f.json", taxRate*100))
 		priceJob := prices.NewTaxIncludedPriceJob(fm, taxRate)
-		go func() {
-			err := priceJob.Process()
-			if err != nil {
-				fmt.Println("Error processing job:", err)
-			}
-		}()
+		go priceJob.Process(c[i])
+	}
+
+	for _, ch := range c {
+		<-ch
 	}
 }
