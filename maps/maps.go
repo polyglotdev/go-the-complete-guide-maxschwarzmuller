@@ -23,4 +23,9 @@ func main() {
 	for key, value := range userNames {
 		fmt.Printf("%s:, %s\n", key, value)
 	}
+	// add to usernames
+	userNames["dom"] = "Dom Hallan"
+	for key, value := range userNames {
+		fmt.Printf("%s:, %s\n", key, value)
+	}
 }
