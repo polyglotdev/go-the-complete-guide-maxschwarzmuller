@@ -17,6 +17,7 @@ func (p *PriceJobWithTax) Process() {
 	for _, price := range p.InputPrices {
 		result[fmt.Sprintf("%.2f", price)] = price * (1 + p.TaxRate)
 	}
+	fmt.Println(result)
 }
 
 // NewPriceJobWithTax creates a new PriceJobWithTax object.
