@@ -29,6 +29,18 @@ func main() {
 	fmt.Printf("User Last Name: %s\n", elijah.LastName)
 	fmt.Printf("User Birthdate: %s\n", elijah.Birthdate)
 	fmt.Printf("User Created At: %s\n", elijah.CreatedAt)
+
+	ezra := User{
+		FirstName: "Ezra",
+		LastName:  "Hallan",
+		Birthdate: "01/01/1990",
+		CreatedAt: time.Now(),
+	}
+
+	fmt.Printf("User First Name: %s\n", ezra.FirstName)
+	fmt.Printf("User Last Name: %s\n", ezra.LastName)
+	fmt.Printf("User Birthdate: %s\n", ezra.Birthdate)
+	fmt.Printf("User Created At: %s\n", ezra.CreatedAt)
 }
 
 func getUserData(promptText string) string {
