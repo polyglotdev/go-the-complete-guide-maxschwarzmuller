@@ -68,25 +68,53 @@ Understanding these differences is not just academic—it affects how Go program
 
 ## Examples
 
+The behavior you're observing in the provided Go code snippet is a result of how arrays are treated in Go: as **value types**. Let's walk through your code and explain what's happening step-by-step:
+
+### Code Analysis
+
 ```go
-package main
-
-import "fmt"
-
-func main() {
-   checkArray := [5]int{1, 2, 3, 4, 5}
-   checkArray2 := checkArray
-   fmt.Println("checkArray: ", checkArray)
-   fmt.Println("checkArray2: ", checkArray2)
-   checkArray2[0] = 100
-   fmt.Println("checkArray: ", checkArray)
-   fmt.Println("checkArray2: ", checkArray2)
-}
+checkArray := [5]int{1, 2, 3, 4, 5} // Line 1
+checkArray2 := checkArray           // Line 2
+fmt.Println("checkArray: ", checkArray)  // Line 3
+fmt.Println("checkArray2: ", checkArray2) // Line 4
+checkArray2[0] = 100                // Line 5
+fmt.Println("checkArray: ", checkArray)  // Line 6
+fmt.Println("checkArray2: ", checkArray2) // Line 7
 ```
 
-### Explanation
+### Step-by-Step Explanation
 
-1. An array `checkArray` is initialized with the integers `1, 2, 3, 4, 5`. This array is stored in memory with each of these values laid out contiguously.
-2. The entire array `checkArray` is assigned to `checkArray2`. In Go, arrays are **value types**, which means that the **data is copied element-by-element from checkArray to a new array checkArray2**. They are now two separate entities in memory; **modifying one does not affect the other**.
-3. Lines 3 and 4: The output confirms that both arrays, `checkArray` and `checkArray2`, contain the same values [1, 2, 3, 4, 5] at this point.
-4. Line 5: The value at the first index of `checkArray2` is changed from 1 to 100. Since `checkArray2` is a separate copy of checkArray, this **modification does not reflect in checkArray**.
+1. **Line 1**: An array `checkArray` is initialized with the integers `1, 2, 3, 4, 5`. This array is stored in memory with each of these values laid out contiguously.
+
+2. **Line 2**: The entire array `checkArray` is assigned to `checkArray2`. In Go, arrays are value types, which means that the data is copied element-by-element from `checkArray` to a new array `checkArray2`. They are now two separate entities in memory; modifying one does not affect the other.
+
+3. **Lines 3 and 4**: The output confirms that both arrays, `checkArray` and `checkArray2`, contain the same values `[1, 2, 3, 4, 5]` at this point.
+
+4. **Line 5**: The value at the first index of `checkArray2` is changed from `1` to `100`. Since `checkArray2` is a separate copy of `checkArray`, this modification does not reflect in `checkArray`.
+
+5. **Lines 6 and 7**: The output shows that `checkArray` remains unchanged (`[1, 2, 3, 4, 5]`), while `checkArray2` shows the updated value (`[100, 2, 3, 4, 5]`).
+
+### Why Are Arrays Value Types?
+
+The design choice to treat arrays as value types stems from the need for predictability and simplicity in understanding how data is passed around in a program. This choice means:
+
+- **Safety**: Functions receiving arrays as parameters cannot alter the original data, which can be crucial for maintaining the integrity of data throughout the program.
+- **Performance**: While copying entire arrays may seem costly, for small arrays, this can be very efficient, especially given modern CPU architectures. For larger arrays, the idiomatic way in Go is to use slices, which are reference types.
+
+### When to Use Slices
+
+If you intended for `checkArray2` to reflect changes made to the same underlying data structure, you should use a slice instead. Slices in Go are reference types and provide a view into an underlying array. Here’s how you could modify your code to use slices, reflecting changes across all references:
+
+```go
+checkSlice := []int{1, 2, 3, 4, 5}
+checkSlice2 := checkSlice
+fmt.Println("checkSlice: ", checkSlice)
+fmt.Println("checkSlice2: ", checkSlice2)
+checkSlice2[0] = 100
+fmt.Println("checkSlice: ", checkSlice)
+fmt.Println("checkSlice2: ", checkSlice2)
+```
+
+In this version, `checkSlice` and `checkSlice2` point to the same underlying array data, so a change to `checkSlice2` is visible when accessing `checkSlice`.
+
+Understanding the distinctions between these types and their use cases is fundamental in Go programming, particularly when performance and memory efficiency are concerns.
