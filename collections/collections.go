@@ -77,4 +77,22 @@ func main() {
 	checkArray2[0] = 100
 	fmt.Println("checkArray: ", checkArray)
 	fmt.Println("checkArray2: ", checkArray2)
+
+	// Convert the array into a slice
+	checkArraySlice := checkArray[:]
+
+	fmt.Println("------------------------------------")
+	fmt.Printf("checkArray Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArray), cap(checkArray), &checkArray)
+
+	fmt.Println("------------------------------------")
+	fmt.Printf("checkArray2 Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArray2), cap(checkArray2), &checkArray2)
+
+	fmt.Println("------------------------------------")
+	fmt.Printf("checkArraySlice Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArraySlice), cap(checkArraySlice), &checkArraySlice)
+
+	fmt.Println("------------------------------------")
+	fmt.Printf("checkArray Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArray), cap(checkArray), &checkArray)
+
+	fmt.Println("------------------------------------")
+	fmt.Printf("checkArray2 Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArray2), cap(checkArray2), &checkArray2)
 }
