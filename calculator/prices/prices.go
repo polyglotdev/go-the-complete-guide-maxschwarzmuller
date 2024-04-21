@@ -1,6 +1,7 @@
 package prices
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"example.com/calculator/conversion"
@@ -25,7 +26,18 @@ func (p *PriceJobWithTax) Process() {
 		taxIncludedPrices := price * (1 + p.TaxRate)
 		result[fmt.Sprintf("%.2f", price)] = fmt.Sprintf("%.2f", taxIncludedPrices)
 	}
-	fmt.Println(result)
+
+	jsonResult, err := json.Marshal(result)
+	if err != nil {
+		fmt.Println("error marshaling JSON: " + err.Error())
+		return
+	}
+
+	err = filemanager.WriteJSON(fmt.Sprintf("result_%0f.json", p.TaxRate*100), jsonResult)
+	if err != nil {
+		fmt.Println("error writing JSON file: " + err.Error())
+		return
+	}
 }
 
 func (j *PriceJobWithTax) LoadData() {
