@@ -19,4 +19,21 @@ func main() {
 	prices = append(prices, discountPrices...)
 	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
 	fmt.Println("----------------------------------------------------------------------")
+	// Start with a slice of length 0 and capacity 0.
+	s := make([]int, 0)
+	fmt.Printf("Capacity: %d, Length: %d\n", cap(s), len(s))
+
+	// Append an element to the slice.
+	s = append(s, 1)
+	fmt.Printf("Capacity: %d, Length: %d\n", cap(s), len(s))
+
+	// Keep appending elements until the capacity reaches 1024.
+	for len(s) < 1024 {
+		s = append(s, 1)
+	}
+	fmt.Printf("Capacity: %d, Length: %d\n", cap(s), len(s))
+
+	// Append one more element.
+	s = append(s, 1)
+	fmt.Printf("Capacity: %d, Length: %d\n", cap(s), len(s))
 }
