@@ -2,6 +2,7 @@ package prices
 
 import "fmt"
 
+// PriceJobWithTax represents a job that processes prices with tax.
 type PriceJobWithTax struct {
 	TaxRate           float64
 	InputPrices       []float64
