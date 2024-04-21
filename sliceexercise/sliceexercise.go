@@ -24,4 +24,15 @@ func main() {
 	for i, goal := range courseGoals {
 		fmt.Println(i+1, goal)
 	}
+	fmt.Println("------------------------------------")
+	courseGoals[1] = "Write better tests in Go"
+	for i, goal := range courseGoals {
+		fmt.Println(i+1, goal)
+	}
+	fmt.Println("------------------------------------")
+	courseGoals = append(courseGoals, "Understand Go interfaces better")
+	for i, goal := range courseGoals {
+		fmt.Println(i+1, goal)
+	}
+	fmt.Println("------------------------------------")
 }
