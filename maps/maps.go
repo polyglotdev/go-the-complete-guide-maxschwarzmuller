@@ -44,4 +44,15 @@ func main() {
 	for i, value := range courseRatings {
 		fmt.Printf("Course: %s\nScore: %.1f\n\n", i, value)
 	}
+
+	fmt.Println("---------------------------------------------")
+	values := make([]string, 0, len(cloudProviders))
+	values = append(values, "Amazon Web Services")
+	values = append(values, "Google Cloud Platform")
+	values = append(values, "Microsoft Azure")
+	values = append(values, "IBM Cloud")
+	values = append(values, "Alibaba Cloud")
+	for i, value := range values {
+		fmt.Printf("%d:, %s\n", i+1, value)
+	}
 }
