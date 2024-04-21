@@ -68,4 +68,13 @@ func main() {
 	tester[0] = 455.23
 	fmt.Println("featuredPrices after append:", featuredPrices)
 	fmt.Println("tester after append:", tester)
+
+	fmt.Println("------------------------------------")
+	checkArray := [5]int{1, 2, 3, 4, 5}
+	checkArray2 := checkArray
+	fmt.Println("checkArray: ", checkArray)
+	fmt.Println("checkArray2: ", checkArray2)
+	checkArray2[0] = 100
+	fmt.Println("checkArray: ", checkArray)
+	fmt.Println("checkArray2: ", checkArray2)
 }
