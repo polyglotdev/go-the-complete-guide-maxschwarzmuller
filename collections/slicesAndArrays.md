@@ -150,3 +150,28 @@ arrayPointer := &originalArray // arrayPointer is a pointer to originalArray
 fmt.Println(originalArray) // Prints [100 2 3]
 fmt.Println(*arrayPointer) // Prints [100 2 3]
 ```
+
+## Safe ways to deal with either slices or arrays
+
+### For Arrays
+
+1. Remember that arrays are value types. When you assign an array to a new variable, you're creating a copy of the original array. Changes to one array do not affect the other.
+2. If you want to modify the original array through a new variable, you can use a pointer to the array.
+3. Arrays have a fixed size. If you need a collection that can grow or shrink, consider using a slice instead.
+
+### For Slices
+
+1. Slices are reference types. When you create a new slice by slicing an existing one, both slices share the same underlying array.
+2. However, if you append to a slice and the underlying array does not have enough capacity Go will create a new, larger array and the original slice will not see the changes made in the new slice.
+3. If you want to create a new slice that does not share the same underlying array, you can use the `copy()` function to create a new slice with its own array.
+
+```go
+originalSlice := []int{1, 2, 3, 4, 5}
+newSlice := make([]int, len(originalSlice))
+copy(newSlice, originalSlice) // Copies the elements from originalSlice to newSlice
+
+newSlice[0] = 100 // This does not modify originalSlice
+
+fmt.Println(originalSlice) // Prints [1 2 3 4 5]
+fmt.Println(newSlice) // Prints [100 2 3 4 5]
+```
