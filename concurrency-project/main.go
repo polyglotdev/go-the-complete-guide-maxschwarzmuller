@@ -20,14 +20,12 @@ func main() {
 		go priceJob.Process(c[i], ec[i])
 	}
 
-	go func() {
-		for i := range taxRates {
-			select {
-			case <-c[i]:
-				fmt.Println("Job completed successfully")
-			case err := <-ec[i]:
-				fmt.Println("Job failed with error:", err)
-			}
+	for i := range taxRates {
+		select {
+		case <-c[i]:
+			fmt.Println("Job completed successfully")
+		case err := <-ec[i]:
+			fmt.Println("Job failed with error:", err)
 		}
-	}()
+	}
 }
