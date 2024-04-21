@@ -1,11 +1,10 @@
 package prices
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 
 	"example.com/calculator/conversion"
+	"example.com/calculator/filemanager"
 )
 
 // PriceJobWithTax represents a job that processes prices with tax.
@@ -30,37 +29,19 @@ func (p *PriceJobWithTax) Process() {
 }
 
 func (j *PriceJobWithTax) LoadData() {
-	file, err := os.Open("prices.txt")
+	lines, err := filemanager.ReadLines("prices.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		fmt.Println("error reading lines: " + err.Error())
 		return
 	}
-
-	scanner := bufio.NewScanner(file)
-
-	var lines []string
-
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-
-	err = scanner.Err()
-	if err != nil {
-		fmt.Println("Error reading file:", err)
-		file.Close()
-		return
-	}
-
 	prices, err := conversion.StringsToFloats(lines)
 
 	if err != nil {
-		fmt.Println("error converting strings to floats:", err)
-		file.Close()
+		fmt.Println("error converting strings to floats: " + err.Error())
 		return
 	}
 
 	j.InputPrices = prices
-	file.Close()
 }
 
 // NewPriceJobWithTax creates a new PriceJobWithTax object.
