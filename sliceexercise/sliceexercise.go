@@ -16,6 +16,8 @@ func main() {
 	fmt.Println("Main Hobbies:", mainHobbies)
 	fmt.Println("Main Hobbies Capacity:", cap(mainHobbies))
 	fmt.Println("------------------------------------")
-	otherHobbies := mainHobbies[1:]
-	fmt.Println("Other Hobbies:", otherHobbies)
+	mainHobbies = mainHobbies[1:3]
+	fmt.Println("Main Hobbies Re-slice:", mainHobbies)
+	fmt.Println("Main Hobbies Capacity:", cap(mainHobbies))
+	fmt.Println("------------------------------------")
 }
