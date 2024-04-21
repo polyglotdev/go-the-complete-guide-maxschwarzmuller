@@ -15,7 +15,7 @@ func say(s string, c chan string) {
 
 func main() {
 	c := make(chan string)
-	go say("world", c)
+	go say("fuck", c)
 	for i := range c {
 		fmt.Println(i)
 	}
