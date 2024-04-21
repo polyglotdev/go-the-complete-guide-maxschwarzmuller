@@ -21,6 +21,16 @@ func greet(s string, c chan string) {
 	close(c)
 }
 
+// create an example with a channel that is a boolean
+func isEven(n int, c chan bool) {
+	if n%2 == 0 {
+		c <- true
+	} else {
+		c <- false
+	}
+	close(c)
+}
+
 func main() {
 	c := make(chan string)
 	go say("hey", c)
@@ -33,4 +43,9 @@ func main() {
 	for i := range c1 {
 		fmt.Println(i)
 	}
+
+	c2 := make(chan bool)
+	go isEven(2, c2)
+	<-c2
+	fmt.Println("2 is even")
 }
