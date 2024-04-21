@@ -87,5 +87,3 @@ func (u User) PrintUser() {
 	fmt.Printf("User Created At: %s\n", u.CreatedAt)
 	fmt.Println("---------------------------------------------------------------------")
 }
-
-//
