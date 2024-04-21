@@ -28,4 +28,20 @@ func main() {
 	for key, value := range userNames {
 		fmt.Printf("%s:, %s\n", key, value)
 	}
+
+	nbaTeams := []string{"Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers", "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"}
+	for i, value := range nbaTeams {
+		fmt.Printf("%d:, %s\n", i, value)
+	}
+	fmt.Println("---------------------------------------------")
+	courseRatings := map[string]float64{
+		"Go Fundamentals":         4.8,
+		"Python Fundamentals":     4.7,
+		"Java Fundamentals":       4.6,
+		"JavaScript Fundamentals": 4.5,
+		"Ruby Fundamentals":       4.4,
+	}
+	for i, value := range courseRatings {
+		fmt.Printf("Course: %s\nScore: %.1f\n\n", i, value)
+	}
 }
