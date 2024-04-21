@@ -18,6 +18,16 @@ type User struct {
 	CreatedAt time.Time
 }
 
+// PrintUser is a method on the User struct that prints the user's details.
+// It prints the user's first name, last name, birthdate, and the date the user was created.
+func (u User) PrintUser() {
+	fmt.Printf("User First Name: %s\n", u.FirstName)
+	fmt.Printf("User Last Name: %s\n", u.LastName)
+	fmt.Printf("User Birthdate: %s\n", u.Birthdate)
+	fmt.Printf("User Created At: %s\n", u.CreatedAt)
+	fmt.Println("---------------------------------------------------------------------")
+}
+
 func main() {
 	elijah := createUser()
 	elijah.PrintUser()
@@ -76,14 +86,4 @@ func getUserData(promptText string, isDate bool) string {
 
 	titleCase := cases.Title(language.English)
 	return titleCase.String(value)
-}
-
-// PrintUser is a method on the User struct that prints the user's details.
-// It prints the user's first name, last name, birthdate, and the date the user was created.
-func (u User) PrintUser() {
-	fmt.Printf("User First Name: %s\n", u.FirstName)
-	fmt.Printf("User Last Name: %s\n", u.LastName)
-	fmt.Printf("User Birthdate: %s\n", u.Birthdate)
-	fmt.Printf("User Created At: %s\n", u.CreatedAt)
-	fmt.Println("---------------------------------------------------------------------")
 }
