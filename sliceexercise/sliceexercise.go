@@ -10,4 +10,10 @@ func main() {
 	fmt.Println("------------------------------------")
 	fmt.Println("First Hobby:", hobbies[0])
 	fmt.Println("Second and Third Hobby:", hobbies[1:])
+
+	fmt.Println("------------------------------------")
+	mainHobbies := hobbies[:2]
+	fmt.Println("Main Hobbies:", mainHobbies)
+	fmt.Println("------------------------------------")
+
 }
