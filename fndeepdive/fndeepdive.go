@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type transformType func(int) int
+
 func main() {
 	numbers := []int{1, 2, 3, 4, 5}
 	result1 := transformNumbers(numbers, double)
@@ -13,7 +15,7 @@ func main() {
 	})
 	fmt.Println("----------------------------------------")
 	fmt.Printf("Double numbers: %v\n", result1)
-	fmt.Printf("Double numbers as anonymous func: %v\n", result2)
+	fmt.Printf("Double numbers as func: %v\n", result2)
 	fmt.Printf("Triple numbers: %v\n", result3)
 	fmt.Println("----------------------------------------")
 	fmt.Println("Numbers: ", numbers)
@@ -36,7 +38,7 @@ func double(number int) int {
 // Returns:
 //
 //	A new slice of integers where each element is the result of applying 'f' to the corresponding element in 'n'.
-func transformNumbers(n []int, f func(int) int) []int {
+func transformNumbers(n []int, f transformType) []int {
 	result := make([]int, len(n))
 	for i, v := range n {
 		result[i] = f(v)
