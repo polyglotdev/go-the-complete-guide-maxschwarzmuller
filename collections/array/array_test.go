@@ -101,3 +101,27 @@ func TestAverageFloat64(t *testing.T) {
 		ExpectedFloat64: 7.24,
 	})
 }
+
+func TestFirstTwo(t *testing.T) {
+	type testCase struct {
+		Name string
+
+		Numbers []int
+
+		ExpectedSlice []int
+	}
+
+	validate := func(t *testing.T, tc *testCase) {
+		t.Run(tc.Name, func(t *testing.T) {
+			actualSlice := FirstTwo(tc.Numbers)
+
+			assert.Equal(t, tc.ExpectedSlice, actualSlice)
+		})
+	}
+
+	validate(t, &testCase{
+		Name:          "TestFirstTwo with positive numbers",
+		Numbers:       []int{1, 2, 3, 4, 5},
+		ExpectedSlice: []int{1, 2},
+	})
+}
