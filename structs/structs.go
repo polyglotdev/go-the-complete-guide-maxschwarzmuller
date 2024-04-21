@@ -25,11 +25,6 @@ func main() {
 		CreatedAt: time.Now(),
 	}
 
-	fmt.Printf("User First Name: %s\n", elijah.FirstName)
-	fmt.Printf("User Last Name: %s\n", elijah.LastName)
-	fmt.Printf("User Birthdate: %s\n", elijah.Birthdate)
-	fmt.Printf("User Created At: %s\n", elijah.CreatedAt)
-
 	ezra := User{
 		FirstName: "Ezra",
 		LastName:  "Hallan",
@@ -37,10 +32,9 @@ func main() {
 		CreatedAt: time.Now(),
 	}
 
-	fmt.Printf("User First Name: %s\n", ezra.FirstName)
-	fmt.Printf("User Last Name: %s\n", ezra.LastName)
-	fmt.Printf("User Birthdate: %s\n", ezra.Birthdate)
-	fmt.Printf("User Created At: %s\n", ezra.CreatedAt)
+	elijah.PrintUser()
+	ezra.PrintUser()
+
 }
 
 func getUserData(promptText string) string {
@@ -52,4 +46,11 @@ func getUserData(promptText string) string {
 		return getUserData(promptText)
 	}
 	return value
+}
+
+func (u User) PrintUser() {
+	fmt.Printf("User First Name: %s\n", u.FirstName)
+	fmt.Printf("User Last Name: %s\n", u.LastName)
+	fmt.Printf("User Birthdate: %s\n", u.Birthdate)
+	fmt.Printf("User Created At: %s\n", u.CreatedAt)
 }
