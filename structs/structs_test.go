@@ -5,6 +5,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"example.com/structs/user"
 )
 
 func TestUserCreation(t *testing.T) {
@@ -33,7 +35,7 @@ func TestUserCreation(t *testing.T) {
 	}()
 
 	// Call the function that reads from os.Stdin
-	user, err := createUser()
+	user, err := user.CreateUser()
 	if err != nil {
 		t.Errorf("createUser() error = %v", err)
 		return
