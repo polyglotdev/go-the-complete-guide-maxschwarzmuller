@@ -2,7 +2,12 @@ package main
 
 import (
 	"fmt"
+	"regexp"
+	"strconv"
 	"time"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 type User struct {
@@ -13,30 +18,47 @@ type User struct {
 }
 
 func main() {
-	firstName := getUserData("Please enter your first name: ")
-	lastName := getUserData("Please enter your last name: ")
-	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	elijah := createUser()
+	elijah.PrintUser()
+}
 
-	elijah := User{
+func createUser() User {
+	firstName := getUserData("Please enter your first name: ", false)
+	lastName := getUserData("Please enter your last name: ", false)
+	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ", true)
+
+	return User{
 		FirstName: firstName,
 		LastName:  lastName,
 		Birthdate: birthdate,
 		CreatedAt: time.Now(),
 	}
-
-	elijah.PrintUser()
-	// ezra.PrintUser()
 }
 
-func getUserData(promptText string) string {
+func getUserData(promptText string, isDate bool) string {
 	fmt.Print(promptText)
 	var value string
 	fmt.Scan(&value)
 	if value == "" {
 		fmt.Println("Invalid input. Please try again.")
-		return getUserData(promptText)
+		return getUserData(promptText, isDate)
 	}
-	return value
+
+	if isDate {
+		match, _ := regexp.MatchString(`\d{2}/\d{2}/\d{4}`, value)
+		if !match {
+			fmt.Println("Invalid date format. Please try again.")
+			return getUserData(promptText, isDate)
+		}
+	} else {
+		if _, err := strconv.Atoi(value); err == nil {
+			fmt.Println("Invalid input. Name should not be a number. Please try again.")
+			return getUserData(promptText, isDate)
+		}
+	}
+
+	titleCase := cases.Title(language.English)
+	return titleCase.String(value)
 }
 
 func (u User) PrintUser() {
@@ -46,3 +68,5 @@ func (u User) PrintUser() {
 	fmt.Printf("User Created At: %s\n", u.CreatedAt)
 	fmt.Println("---------------------------------------------------------------------")
 }
+
+//
