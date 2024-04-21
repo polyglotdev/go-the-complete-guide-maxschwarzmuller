@@ -4,7 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
+
+	"example.com/calculator/conversion"
 )
 
 // PriceJobWithTax represents a job that processes prices with tax.
@@ -50,21 +51,16 @@ func (j *PriceJobWithTax) LoadData() {
 		return
 	}
 
-	prices := make([]float64, len(lines))
+	prices, err := conversion.StringsToFloats(lines)
 
-	for lineIndex, line := range lines {
-		floatPrice, err := strconv.ParseFloat(line, 64)
-
-		if err != nil {
-			fmt.Println("Error parsing line", lineIndex, ":", err)
-			file.Close()
-			return
-		}
-
-		prices[lineIndex] = floatPrice
+	if err != nil {
+		fmt.Println("error converting strings to floats:", err)
+		file.Close()
+		return
 	}
 
 	j.InputPrices = prices
+	file.Close()
 }
 
 // NewPriceJobWithTax creates a new PriceJobWithTax object.
