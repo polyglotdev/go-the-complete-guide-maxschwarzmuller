@@ -35,6 +35,12 @@ func createUser() User {
 	}
 }
 
+// getUserData is a function that prompts the user for input and validates it.
+// It takes two parameters: a string for the prompt text and a boolean to indicate whether the input should be a date.
+// If the input is empty, it prompts the user again.
+// If the input should be a date, it checks whether the input matches the date format (MM/DD/YYYY).
+// If the input should not be a date, it checks whether the input is a number and prompts the user again if it is.
+// The function returns the input in title case.
 func getUserData(promptText string, isDate bool) string {
 	fmt.Print(promptText)
 	var value string
