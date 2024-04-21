@@ -17,6 +17,11 @@ func main() {
 	fmt.Println("-------------------------------")
 	sum := sumup(1, 2, 3, 4, 5)
 	fmt.Printf("Sum: %d\n", sum)
+
+	fmt.Println("-------------------------------")
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	sum2 := sumup(1, nums...)
+	fmt.Printf("Sum2: %d\n", sum2)
 }
 
 func factorial(n int) int {
@@ -27,10 +32,10 @@ func factorial(n int) int {
 	}
 }
 
-func sumup(n ...int) int {
+func sumup(_ int, numbers ...int) int {
 	sum := 0
 
-	for _, v := range n {
+	for _, v := range numbers {
 		sum += v
 	}
 	return sum
