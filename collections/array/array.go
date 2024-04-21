@@ -17,3 +17,9 @@ func TotalFloat64(prices []float64) float64 {
 	}
 	return total
 }
+
+// Average takes in a slice of integers and returns the average of all the integers in the slice.
+func Average(numbers []int) float64 {
+	total := Total(numbers)
+	return float64(total) / float64(len(numbers))
+}
