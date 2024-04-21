@@ -117,4 +117,21 @@ func main() {
 	fmt.Println("newDArray after change:", newDArray)
 	fmt.Printf("dArray memory address: %p\n", &dArray)
 	fmt.Printf("newDArray memory address: %p\n", &newDArray)
+
+	fmt.Println("------------------------------------")
+	ogSlice := []int{1, 2, 3, 4, 5}
+	newSlice := ogSlice[1:3]
+	fmt.Println("newSlice: ", newSlice)
+	newSlice[0] = 10000
+	fmt.Println("ogSlice: ", ogSlice)
+	fmt.Println("newSlice: ", newSlice)
+
+	fmt.Println("------------------------------------")
+	ogSlice2 := [5]int{1, 2, 3, 4, 5}
+	arrPtr := &ogSlice2
+	fmt.Println("ogSlice2: ", ogSlice2)
+	fmt.Println("arrPtr: ", arrPtr)
+	(*arrPtr)[0] = 100
+	fmt.Println("ogSlice2: ", ogSlice2)
+	fmt.Println("arrPtr: ", arrPtr)
 }
