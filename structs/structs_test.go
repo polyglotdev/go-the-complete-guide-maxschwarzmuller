@@ -35,7 +35,7 @@ func TestUserCreation(t *testing.T) {
 	}()
 
 	// Call the function that reads from os.Stdin
-	user, err := user.CreateUser()
+	user, err := user.New()
 	if err != nil {
 		t.Errorf("createUser() error = %v", err)
 		return
