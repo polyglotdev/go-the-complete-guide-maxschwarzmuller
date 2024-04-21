@@ -21,12 +21,5 @@ func main() {
 				fmt.Println("Error processing job:", err)
 			}
 		}()
-
-		// err := priceJob.IOManager.WriteResult(priceJob)
-
-		// if err != nil {
-		// 	fmt.Println("Could not process job")
-		// 	fmt.Println(err)
-		// }
 	}
 }
