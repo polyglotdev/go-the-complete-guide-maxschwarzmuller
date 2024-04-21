@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type User struct {
 	FirstName string
 	LastName  string
 	Birthdate string
