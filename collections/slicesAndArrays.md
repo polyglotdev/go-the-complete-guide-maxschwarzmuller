@@ -127,3 +127,26 @@ Understanding the distinctions between these types and their use cases is fundam
 4. Use arrays when you need a fixed-size collection of elements. Use slices when you need a dynamic collection that can grow or shrink.
 5. Use slices when you want to share data between multiple parts of your program without copying the data.
 6. `append()` function is used to add elements to a slice. If the underlying array is too small to accommodate new elements, a new array is allocated, and the data is copied over. A new array is also allocated if the slice exceeds its capacity.
+7. In Go, if you have a slice and you create a new slice by slicing the original one (without using append to add more elements than the original slice's capacity), both slices share the same underlying array. This means that if you modify an element in one slice, the change will be visible in the other slice because they're both pointing to the same data.
+
+```go
+originalSlice := []int{1, 2, 3, 4, 5}
+newSlice := originalSlice[1:3] // newSlice is now a slice of originalSlice
+
+newSlice[0] = 100 // This modifies the second element of originalSlice
+
+fmt.Println(originalSlice) // Prints [1 100 3 4 5]
+fmt.Println(newSlice) // Prints [100 3]
+```
+
+For arrays, since they are value types, a change in the original array or the copied array does not affect each other. They are completely separate entities. However, if you have a pointer to an array and you dereference that pointer to change an element, that change will be reflected in the original array because the pointer is referencing the memory location of the original array.
+
+```go
+originalArray := [3]int{1, 2, 3}
+arrayPointer := &originalArray // arrayPointer is a pointer to originalArray
+
+(*arrayPointer)[0] = 100 // This modifies the first element of originalArray
+
+fmt.Println(originalArray) // Prints [100 2 3]
+fmt.Println(*arrayPointer) // Prints [100 2 3]
+```
