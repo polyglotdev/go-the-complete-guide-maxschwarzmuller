@@ -1,6 +1,7 @@
 package prices
 
 type PriceJobWithTax struct {
-	Prices   []float64
-	TaxRates []float64
+	TaxRate           float64
+	InputPrices       []float64
+	TaxIncludedPrices map[string]float64
 }
