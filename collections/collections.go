@@ -24,4 +24,8 @@ func main() {
 	cpAveragePrice := averagePrice
 	fmt.Println("------------------------------------")
 	fmt.Printf("The average price is: $%.2f\nThis is from cpAveragePrice\n", cpAveragePrice)
+
+	fmt.Println("------------------------------------")
+	firstTwo := array.FirstTwo(numbers)
+	fmt.Printf("The first two numbers in numbers slice are: %v\n", firstTwo)
 }
