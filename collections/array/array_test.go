@@ -77,3 +77,27 @@ func TestAverage(t *testing.T) {
 		ExpectedFloat64: 3,
 	})
 }
+
+func TestAverageFloat64(t *testing.T) {
+	type testCase struct {
+		Name string
+
+		Prices []float64
+
+		ExpectedFloat64 float64
+	}
+
+	validate := func(t *testing.T, tc *testCase) {
+		t.Run(tc.Name, func(t *testing.T) {
+			actualFloat64 := AverageFloat64(tc.Prices)
+
+			assert.Equal(t, tc.ExpectedFloat64, actualFloat64)
+		})
+	}
+
+	validate(t, &testCase{
+		Name:            "TestAverageFloat64 with positive numbers",
+		Prices:          []float64{10.99, 5.99, 3.99, 7.99},
+		ExpectedFloat64: 7.24,
+	})
+}
