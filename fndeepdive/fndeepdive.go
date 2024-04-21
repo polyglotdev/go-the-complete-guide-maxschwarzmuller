@@ -2,28 +2,32 @@ package main
 
 import "fmt"
 
-type transformType func(int) int
+type transformType func(int, int) int
 
 func main() {
 	numbers := []int{1, 2, 3, 4, 5}
-	result1 := transformNumbers(numbers, double)
-	result2 := transformNumbers(numbers, func(n int) int {
-		return n * 2
+	result1 := transformNumbers(numbers, 2, func(n int, multiplier int) int {
+		return n * multiplier
 	})
-	result3 := transformNumbers(numbers, func(n int) int {
-		return n * 3
+
+	result2 := transformNumbers(numbers, 3, func(n, multiplier int) int {
+		return n * multiplier
 	})
+
+	result3 := transformNumbers(numbers, 4, func(n, multiplier int) int {
+		return n * multiplier
+	})
+
 	fmt.Println("----------------------------------------")
 	fmt.Printf("Double numbers: %v\n", result1)
-	fmt.Printf("Double numbers as func: %v\n", result2)
-	fmt.Printf("Triple numbers: %v\n", result3)
+	fmt.Printf("Triple numbers as func: %v\n", result2)
+	fmt.Printf("Quadruple numbers: %v\n", result3)
 	fmt.Println("----------------------------------------")
 	fmt.Println("Numbers: ", numbers)
 	fmt.Println("----------------------------------------")
-}
-
-func double(number int) int {
-	return number * 2
+	transformer := getTransformerFunction()
+	result4 := transformNumbers(numbers, 5, transformer)
+	fmt.Printf("5x numbers as func: %v\n", result4)
 }
 
 // transformNumbers is a function that takes a slice of integers and a function as arguments.
@@ -38,10 +42,16 @@ func double(number int) int {
 // Returns:
 //
 //	A new slice of integers where each element is the result of applying 'f' to the corresponding element in 'n'.
-func transformNumbers(n []int, f transformType) []int {
+func transformNumbers(n []int, multiplier int, f transformType) []int {
 	result := make([]int, len(n))
 	for i, v := range n {
-		result[i] = f(v)
+		result[i] = f(v, multiplier)
 	}
 	return result
+}
+
+func getTransformerFunction() transformType {
+	return func(n int, multiplier int) int {
+		return n * multiplier
+	}
 }
