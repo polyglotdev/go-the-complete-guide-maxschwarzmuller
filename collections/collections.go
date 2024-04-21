@@ -95,4 +95,15 @@ func main() {
 
 	fmt.Println("------------------------------------")
 	fmt.Printf("checkArray2 Header:\nLength: %d\nCapacity: %d\nMemory Address: %v\n", len(checkArray2), cap(checkArray2), &checkArray2)
+
+	fmt.Println("------------------------------------")
+	ticketPrices := []float64{100.25, 200.98, 300.67}
+	fmt.Println(ticketPrices[0:1])
+	updatedTicketPrices := append(ticketPrices, 400.50)
+	fmt.Println("Ticket prices: ", ticketPrices)
+	fmt.Println("Updated prices: ", updatedTicketPrices)
+	updatedTicketPrices[0] = 43600.75
+	fmt.Println("------------------------------------")
+	fmt.Println("Ticket prices: ", ticketPrices)
+	fmt.Println("Updated prices: ", updatedTicketPrices)
 }
