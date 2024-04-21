@@ -90,3 +90,4 @@ func main() {
 2. The entire array `checkArray` is assigned to `checkArray2`. In Go, arrays are **value types**, which means that the **data is copied element-by-element from checkArray to a new array checkArray2**. They are now two separate entities in memory; **modifying one does not affect the other**.
 3. Lines 3 and 4: The output confirms that both arrays, `checkArray` and `checkArray2`, contain the same values [1, 2, 3, 4, 5] at this point.
 4. Line 5: The value at the first index of `checkArray2` is changed from 1 to 100. Since `checkArray2` is a separate copy of checkArray, this **modification does not reflect in checkArray**.
+5. Lines 6 and 7: The output shows that `checkArray `remains unchanged `([1, 2, 3, 4, 5])`, while `checkArray2` shows the updated value `([100, 2, 3, 4, 5])`.
