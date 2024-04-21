@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	prices := []float64{10, 20, 30}
-	taxRates := []float64{0, 0.7, 0.1, 0.15}
+	taxRates := []float64{0, 0.07, 0.1, 0.15}
 
 	result := calculate(prices, taxRates)
 	fmt.Printf("result: %v\n", result)
