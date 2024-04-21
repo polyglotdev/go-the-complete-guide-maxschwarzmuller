@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	result := factorial(5)
@@ -11,6 +13,11 @@ func main() {
 
 	result3 := factorial(15)
 	fmt.Printf("result3: %d\n", result3)
+
+	fmt.Println("-------------------------------")
+	numberList := []int{1, 2, 3, 4, 5}
+	sum := sumup(numberList)
+	fmt.Printf("Sum: %d\n", sum)
 }
 
 func factorial(n int) int {
@@ -19,4 +26,13 @@ func factorial(n int) int {
 	} else {
 		return n * factorial(n-1)
 	}
+}
+
+func sumup(n []int) int {
+	sum := 0
+
+	for _, v := range n {
+		sum += v
+	}
+	return sum
 }
