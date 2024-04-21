@@ -7,8 +7,11 @@ func main() {
 	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
 	fmt.Println("----------------------------------------------------------------------")
 	prices = append(prices, 3458.98, 576.23)
-	fmt.Println("Prices:", prices)
+	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
+	fmt.Println("----------------------------------------------------------------------")
 
 	prices = prices[1:]
 	fmt.Println("Prices after re-slice:", prices)
+	fmt.Printf("Prices Header: %T\nCapacity: %d\nLength: %d\nPrices: %v\n", prices, cap(prices), len(prices), prices)
+	fmt.Println("----------------------------------------------------------------------")
 }
