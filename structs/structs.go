@@ -10,6 +10,7 @@ import (
 	"golang.org/x/text/language"
 )
 
+// User is a struct that represents a user in the system.
 type User struct {
 	FirstName string
 	LastName  string
@@ -67,6 +68,8 @@ func getUserData(promptText string, isDate bool) string {
 	return titleCase.String(value)
 }
 
+// PrintUser is a method on the User struct that prints the user's details.
+// It prints the user's first name, last name, birthdate, and the date the user was created.
 func (u User) PrintUser() {
 	fmt.Printf("User First Name: %s\n", u.FirstName)
 	fmt.Printf("User Last Name: %s\n", u.LastName)
