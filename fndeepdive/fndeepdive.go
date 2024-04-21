@@ -28,6 +28,11 @@ func main() {
 	transformer := getTransformerFunction()
 	result4 := transformNumbers(numbers, 5, transformer)
 	fmt.Printf("5x numbers as func: %v\n", result4)
+
+	fmt.Println("----------------------------------------")
+	transformer2 := createTransformer(6)
+	result5 := transformNumbers(numbers, 6, transformer2)
+	fmt.Printf("6x numbers as func: %v\n", result5)
 }
 
 // transformNumbers is a function that takes a slice of integers and a function as arguments.
@@ -51,6 +56,12 @@ func transformNumbers(n []int, multiplier int, f transformType) []int {
 }
 
 func getTransformerFunction() transformType {
+	return func(n int, multiplier int) int {
+		return n * multiplier
+	}
+}
+
+func createTransformer(multiplier int) transformType {
 	return func(n int, multiplier int) int {
 		return n * multiplier
 	}
