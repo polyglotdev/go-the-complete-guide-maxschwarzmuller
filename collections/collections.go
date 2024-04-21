@@ -59,4 +59,13 @@ func main() {
 	myArray4Slice = append(myArray4Slice, 6)
 	fmt.Println("myArray4 after slice:", myArray4)
 	fmt.Println("myArray4Slice after slice:", myArray4Slice)
+
+	fmt.Println("------------------------------------")
+	featuredPrices := []float64{100.25, 200.98, 300.67}
+	tester := featuredPrices[0:2]
+	fmt.Println("featuredPrices before append:", featuredPrices)
+	fmt.Println("tester before append:", tester)
+	tester[0] = 455.23
+	fmt.Println("featuredPrices after append:", featuredPrices)
+	fmt.Println("tester after append:", tester)
 }
