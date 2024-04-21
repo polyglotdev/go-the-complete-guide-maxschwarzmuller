@@ -20,4 +20,8 @@ func main() {
 
 	averagePrice := array.AverageFloat64(prices[:])
 	fmt.Printf("The average price is: $%.2f\n", averagePrice)
+
+	cpAveragePrice := averagePrice
+	fmt.Println("------------------------------------")
+	fmt.Printf("The average price is: $%.2f\nThis is from cpAveragePrice\n", cpAveragePrice)
 }
