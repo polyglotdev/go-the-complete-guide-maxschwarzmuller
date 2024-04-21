@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type UdemyMap map[string]float64
+
 func main() {
 	cloudProviders := map[string]string{
 		"aws":     "Amazon Web Services",
@@ -54,5 +56,16 @@ func main() {
 	values = append(values, "Alibaba Cloud")
 	for i, value := range values {
 		fmt.Printf("%d:, %s\n", i+1, value)
+	}
+
+	fmt.Println("---------------------------------------------")
+	udemyCourses := make(UdemyMap)
+	udemyCourses["Go the Complete Guide"] = 4.8
+	udemyCourses["Python Data Structures"] = 4.7
+	udemyCourses["All the Java your ass can handle"] = 4.6
+	udemyCourses["JavaScript Bootcamp is for the ♥️"] = 4.5
+	udemyCourses["Ruby Basics for the the Gangstas"] = 4.4
+	for i, courses := range udemyCourses {
+		fmt.Printf("Course: %s\nRating: %.1f\n\n", i, courses)
 	}
 }
