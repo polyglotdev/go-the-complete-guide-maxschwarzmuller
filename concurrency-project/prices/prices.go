@@ -32,10 +32,11 @@ func (job *TaxIncludedPriceJob) LoadData() error {
 	return nil
 }
 
-func (job *TaxIncludedPriceJob) Process(c chan bool) {
+func (job *TaxIncludedPriceJob) Process(c chan bool, ec chan error) {
 	err := job.LoadData()
 
 	if err != nil {
+		ec <- err
 		return
 	}
 
