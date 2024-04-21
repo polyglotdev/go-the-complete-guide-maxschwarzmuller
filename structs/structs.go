@@ -23,11 +23,18 @@ func main() {
 	elijah.PrintUser()
 }
 
+// createUser is a function that prompts the user for their first name, last name, and birthdate.
+// It then creates a new User struct with these values and the current time as the CreatedAt value.
+// It does not take any arguments and returns a User struct.
 func createUser() User {
+	// Prompt the user for their first name. The second argument is false because a first name is not a date.
 	firstName := getUserData("Please enter your first name: ", false)
+	// Prompt the user for their last name. The second argument is false because a last name is not a date.
 	lastName := getUserData("Please enter your last name: ", false)
+	// Prompt the user for their birthdate. The second argument is true because a birthdate is a date.
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ", true)
 
+	// Return a new User struct with the provided first name, last name, birthdate, and the current time.
 	return User{
 		FirstName: firstName,
 		LastName:  lastName,
