@@ -29,3 +29,8 @@ func AverageFloat64(prices []float64) float64 {
 	total := TotalFloat64(prices)
 	return total / float64(len(prices))
 }
+
+// FirstTwo returns the first two elements of a slice of integers.
+func FirstTwo(numbers []int) []int {
+	return numbers[:2]
+}
