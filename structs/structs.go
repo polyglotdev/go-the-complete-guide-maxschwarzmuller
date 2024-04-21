@@ -18,17 +18,17 @@ func main() {
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	// ... do something awesome with that gathered data!
-	user := User{
+	elijah := User{
 		FirstName: firstName,
 		LastName:  lastName,
 		Birthdate: birthdate,
 		CreatedAt: time.Now(),
 	}
 
-	fmt.Printf("User First Name: %s\n", user.FirstName)
-	fmt.Printf("User Last Name: %s\n", user.LastName)
-	fmt.Printf("User Birthdate: %s\n", user.Birthdate)
-	fmt.Printf("User Created At: %s\n", user.CreatedAt)
+	fmt.Printf("User First Name: %s\n", elijah.FirstName)
+	fmt.Printf("User Last Name: %s\n", elijah.LastName)
+	fmt.Printf("User Birthdate: %s\n", elijah.Birthdate)
+	fmt.Printf("User Created At: %s\n", elijah.CreatedAt)
 }
 
 func getUserData(promptText string) string {
