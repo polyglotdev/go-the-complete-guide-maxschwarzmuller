@@ -8,8 +8,8 @@ type PriceJobWithTax struct {
 
 func NewPriceJobWithTax(taxRate float64, inputPrices []float64) *PriceJobWithTax {
 	return &PriceJobWithTax{
-		TaxRate:           taxRate,
 		InputPrices:       inputPrices,
+		TaxRate:           taxRate,
 		TaxIncludedPrices: make(map[string]float64),
 	}
 }
