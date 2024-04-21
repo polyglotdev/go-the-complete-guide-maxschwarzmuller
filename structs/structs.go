@@ -21,6 +21,9 @@ type User struct {
 func main() {
 	elijah := createUser()
 	elijah.PrintUser()
+
+	ezra := createUser()
+	ezra.PrintUser()
 }
 
 // createUser is a function that prompts the user for their first name, last name, and birthdate.
