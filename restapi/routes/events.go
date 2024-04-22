@@ -35,6 +35,13 @@ func GetEvent(c *gin.Context) {
 }
 
 func CreateEvent(c *gin.Context) {
+	token := c.Request.Header.Get("Authorization")
+	// checkov:skip=CKV_SECRET_6: not a password
+	if token == "" {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization token is required"})
+		return
+	}
+
 	var event models.Event
 	err := c.ShouldBindJSON(&event)
 	if err != nil {
