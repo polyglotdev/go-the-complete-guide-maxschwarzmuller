@@ -40,6 +40,9 @@ func (u User) Save() error {
 	return err
 }
 
+// Authenticate checks if the user credentials are valid.
+// It will return nil to indicate that the user is authenticated.
+// nil in this context means that there was no error during the authentication process.
 func (u User) Authenticate() error {
 	query := "SELECT password FROM users WHERE email = ?"
 	row := db.DB.QueryRow(query, u.Email)
