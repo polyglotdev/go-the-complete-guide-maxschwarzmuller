@@ -1,9 +1,0 @@
-POST http://localhost:8080/events
-content-type: application/json
-
-{
-  "name": "Test event 3",
-  "description": "Another test event 3",
-  "location": "A test location 3",
-  "dateTime": "2025-02-01T16:30:00.000Z"
-}
