@@ -37,3 +37,21 @@ func (u User) Save() error {
 
 	return err
 }
+
+func (u User) Authenticate() error {
+	query := "SELECT password FROM users WHERE email = ?"
+	row := db.DB.QueryRow(query, u.Email)
+
+	var hashedPassword string
+	err := row.Scan(&hashedPassword)
+	if err != nil {
+		return err
+	}
+
+	err = utils.VerifyPassword(hashedPassword, u.Password)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
