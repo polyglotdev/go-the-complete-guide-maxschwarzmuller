@@ -62,18 +62,21 @@ func UpdateEvent(c *gin.Context) {
 		return
 	}
 
-	var event models.Event
-	err = c.ShouldBindJSON(&event)
+	event, err := models.GetEventByID(int64(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Event not found"})
+		return
+	}
+
+	var updatedEvent models.Event
+	err = c.ShouldBindJSON(&updatedEvent)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	event.ID = int64(id)
-	event.UserID = 1
-
-	err = event.Save()
-
+	updatedEvent.ID = event.ID
+	err = updatedEvent.Update()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
