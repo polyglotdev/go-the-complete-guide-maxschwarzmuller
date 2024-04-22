@@ -48,7 +48,7 @@ func (u User) Authenticate() error {
 		return err
 	}
 
-	err = utils.VerifyPassword(hashedPassword, u.Password)
+	err = utils.Verify(hashedPassword, u.Password)
 	if err != nil {
 		return err
 	}
