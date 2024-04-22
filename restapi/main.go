@@ -6,10 +6,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"example.com/rest-api/db"
 	"example.com/rest-api/models"
 )
 
 func main() {
+	db.InitDB()
 	server := gin.Default()
 
 	server.GET("/events", getEvents)
