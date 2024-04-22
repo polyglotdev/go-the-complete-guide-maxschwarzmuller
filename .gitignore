@@ -56,3 +56,4 @@ Temporary Items
 *.ipynb
 first-app
 best-practices/
+restapi/api-test/*
