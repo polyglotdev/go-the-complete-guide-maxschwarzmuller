@@ -13,9 +13,7 @@ func main() {
 	db.InitDB()
 	server := gin.Default()
 
-	server.GET("/events", routes.GetEvents)
-	server.GET("/events/:id", routes.GetEvent)
-	server.POST("/events", routes.CreateEvent)
+	routes.Register(server)
 
 	err := server.Run(":8080")
 	if err != nil {
