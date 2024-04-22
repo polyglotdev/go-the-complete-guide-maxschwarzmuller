@@ -20,3 +20,9 @@ func (e *Event) Save() error {
 	events = append(events, *e)
 	return nil
 }
+
+// GetEvents returns all events from the database.
+func GetEvents() []Event {
+	// Get all events from the database...
+	return events
+}
