@@ -16,3 +16,9 @@ func GenerateToken(email string, userId int64) (string, error) {
 	})
 	return token.SignedString([]byte(secretKey))
 }
+
+func Parse(tokenString string) (*jwt.Token, error) {
+	return jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		return []byte(secretKey), nil
+	})
+}
