@@ -54,3 +54,30 @@ func CreateEvent(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"message": "Event created successfully", "event": event})
 }
+
+func UpdateEvent(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid event ID format"})
+		return
+	}
+
+	var event models.Event
+	err = c.ShouldBindJSON(&event)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	event.ID = int64(id)
+	event.UserID = 1
+
+	err = event.Save()
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Event updated successfully", "event": event})
+}
