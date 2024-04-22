@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"example.com/rest-api/models"
 )
 
 func main() {
@@ -19,7 +22,6 @@ func main() {
 }
 
 func getEvents(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "GET events",
-	})
+	events := models.GetEvents()
+	c.JSON(http.StatusOK, events)
 }
