@@ -106,7 +106,3 @@ func DeleteEvent(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Event deleted successfully"})
 }
-
-func Signup(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "User signed up successfully"})
-}
