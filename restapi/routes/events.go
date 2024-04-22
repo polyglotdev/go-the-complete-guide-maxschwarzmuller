@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"example.com/rest-api/models"
+	"example.com/rest-api/utils"
 )
 
 func GetEvents(c *gin.Context) {
@@ -42,8 +43,14 @@ func CreateEvent(c *gin.Context) {
 		return
 	}
 
+	err := utils.VerifyToken(token)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid authorization token"})
+		return
+	}
+
 	var event models.Event
-	err := c.ShouldBindJSON(&event)
+	err = c.ShouldBindJSON(&event)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
