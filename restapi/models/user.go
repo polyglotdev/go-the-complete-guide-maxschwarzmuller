@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"example.com/rest-api/db"
 	"example.com/rest-api/utils"
 )
@@ -45,12 +47,12 @@ func (u User) Authenticate() error {
 	var hashedPassword string
 	err := row.Scan(&hashedPassword)
 	if err != nil {
-		return err
+		return errors.New("credentials do not match")
 	}
 
 	err = utils.Verify(hashedPassword, u.Password)
 	if err != nil {
-		return err
+		return errors.New("credentials do not match")
 	}
 
 	return nil
