@@ -1,0 +1,56 @@
+package routes
+
+import (
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+
+	"example.com/rest-api/models"
+)
+
+func GetEvents(c *gin.Context) {
+	events, err := models.GetAllEvents()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, events)
+}
+
+func GetEvent(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid event ID format"})
+		return
+	}
+
+	event, err := models.GetEventByID(int64(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Event not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, event)
+}
+
+func CreateEvent(c *gin.Context) {
+	var event models.Event
+	err := c.ShouldBindJSON(&event)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	event.ID = 1
+	event.UserID = 1
+
+	err = event.Save()
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusCreated, gin.H{"message": "Event created successfully", "event": event})
+}
