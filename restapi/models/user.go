@@ -44,11 +44,11 @@ func (u User) Save() error {
 // It will return nil to indicate that the user is authenticated.
 // nil in this context means that there was no error during the authentication process.
 func (u User) Authenticate() error {
-	query := "SELECT password FROM users WHERE email = ?"
+	query := "SELECT id, password FROM users WHERE email = ?"
 	row := db.DB.QueryRow(query, u.Email)
 
 	var hashedPassword string
-	err := row.Scan(&hashedPassword)
+	err := row.Scan(&u.ID, &hashedPassword)
 	if err != nil {
 		return errors.New("credentials do not match")
 	}
