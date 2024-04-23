@@ -17,7 +17,7 @@ type Event struct {
 }
 
 // Save saves the event to the database.
-func (e Event) Save() error {
+func (e *Event) Save() error {
 	query := `
 		INSERT INTO events (name, description, location, dateTime, user_id)
 		VALUES (?, ?, ?, ?, ?)`
