@@ -62,9 +62,15 @@ func UpdateEvent(c *gin.Context) {
 		return
 	}
 
+	userId := c.GetInt64("userId")
 	event, err := models.GetEventByID(int64(id))
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Event not found"})
+		return
+	}
+
+	if event.UserID != userId {
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not allowed to update this event"})
 		return
 	}
 
