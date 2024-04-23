@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"example.com/rest-api/models"
-	"example.com/rest-api/utils"
 )
 
 func GetEvents(c *gin.Context) {
@@ -36,27 +35,15 @@ func GetEvent(c *gin.Context) {
 }
 
 func CreateEvent(c *gin.Context) {
-	token := c.Request.Header.Get("Authorization")
-	// checkov:skip=CKV_SECRET_6: not a password
-	if token == "" {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization token is required"})
-		return
-	}
-
-	userId, err := utils.VerifyToken(token)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid authorization token"})
-		return
-	}
-
 	var event models.Event
-	err = c.ShouldBindJSON(&event)
+	err := c.ShouldBindJSON(&event)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	event.UserID = userId
+	userId, _ := c.Get("userId")
+	event.UserID = userId.(int64)
 
 	err = event.Save()
 
